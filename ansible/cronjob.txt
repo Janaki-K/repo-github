@@ -1,0 +1,87 @@
+    1  yum install epel-release
+    2  yum install ansible
+    3  ansible --version
+    4  hostnamectl set-hostname --static ansiblemaster
+    5  exit
+    6  ssh-keygen -t rsa
+    7  cat /root/.ssh/id_rsa.pub
+    8   cat /root/.ssh/id_rsa.pub
+    9  vi /etc/hosts
+   10  cat /etc/hosts
+   11  ssh root@db1
+   12  ansible all -m ping
+   13  vi /etc/ansible/host
+   14  vi /etc/ansible/hosts
+   15  ansible all -m ping
+   16  cat /etc/hosts
+   17  ansible db1 -m ping
+   18  ping db1
+   19  ansible --version
+   20  /usr/lib/python2.7/site-packages/ansible
+   21  cd /usr/lib/python2.7/site-packages/ansible
+   22  ls
+   23  cd modules
+   24  ls
+   25  cd /
+   26  ansible all -m command -a uptime
+   27  ansible all -m command -a "df -h"
+   28  ansible all -m command -a "free -m"
+   29  ansible all -m shell -a "free -m"
+   30  ansible all -m shell -a "cat /etc/passwd"
+   31  history
+   32  cd /root
+   33  ls
+   34  mkdir ansiblecommand
+   35  cd ansiblecommand/
+   36  history > ansiblecommand.txt
+   37  ansible db1 -m file -a "path=/tmp/x state=directory mode=0755"
+   38  ansible db1 -m file -a "path=/tmp/x state=directo mode=0755"
+   39  ansible db1 -m file -a "path=/tmp/y state=touch mode=0755"
+   40  history
+   41  history > ansiblefilemodule.txt
+   42  ssh root@db1
+   43  ansible all -m group -a "name=weblogic state=present"
+   44  ansible all -m user -a "name=weblogic group=weblogic createhome=yes"
+   45  histroy ansibleusergroup.txt
+   46  history ansibleusergroup.txt
+   47  history > ansibleusergroup.txt
+   48  history
+   49  ansible db1 -m file -a "path=tmp/testfile state=touch mode=0755"
+   50  ansible db1 -m file -a "path=/tmp/testfile state=touch mode=0755"
+   51  ansible db1 -m file -a "path=/tmp/testfile state=directory mode=0755"
+   52  ansible db1 -m file -a "path=/tmp/testdir state=directory mode=0755"
+   53  touch /tmp/httpd.conf
+   54  ansible all -m copy -a "src=/tmp/httpd.conf dest=/tmp/httpd.conf"
+   55  vi /tmp/httpd.conf 
+   56  ansible all -m copy -a "src=/tmp/httpd.conf dest=/tmp/httpd.conf"
+   57  history
+   58  vi /tmp/httpd.conf 
+   59  ansible all -m copy -a "src=/tmp/httpd.conf dest=/tmp/httpd.conf"
+   60  vi /tmp/httpd.conf 
+   61  ansible all -m copy -a "src=/tmp/httpd.conf dest=/tmp/httpd.conf"
+   62  history
+   63  history > copymodule.txt
+   64  ls
+   65  clear
+   66  ansible all -m yum -a "name=httpd state=installed"
+   67  ansible all -m service -a "name=httpd state=started enabled=yes"
+   68  ansible all -m yum -a "name=httpd state=installe"
+   69  ansible all -m yum -a "name=httpd state=remove"
+   70  ansible all -m yum -a "name=httpd state=removed"
+   71  history
+   72  history packeinstall.txt
+   73  history > packeinstall.txt
+   74  ansible all -m yum -a "name=MYSQL-python state=removed"
+   75  ansible all -m yum -a "name=MYSQL-python state=installed"
+   76  ansible all -m easy_install -a "name=django"
+   77  touch /tmp/backup.sh
+   78  ansible all -m copy -a "src=/tmp/backup.sh dest=/tmp/backup.sh"
+   79  ansible all -m cron -a "name='daily-cron-all-server' minutes=*/15 job='/tmp/backup.sh'"
+   80  ansible all -m cron -a "name='daily-cron-all-server' minute=*/15 job='/tmp/backup.sh'"
+   81  ansible all -m cron -a "name='daily-cron-all-server' hour=4 job='/tmp/backup.sh'"
+   82  ansible all -m cron -a "name='daily-cron-all-server' special=reboot job='/tmp/backup.sh'"
+   83  ansible all -m cron -a "name='daily-cron-all-server' special_time=reboot job='/tmp/backup.sh'"
+   84  ansible all -m cron -a "name='daily-cron-all-server' special_time=daily job='/tmp/backup.sh'"
+   85  ansible all -m cron -a "name='daily-cron-all-server' special_time=weekly job='/tmp/backup.sh'"
+   86  history
+   87  history > cronjob.txt

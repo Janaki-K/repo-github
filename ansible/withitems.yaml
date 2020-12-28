@@ -1,0 +1,22 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: db1
+    vars:
+      mail_services:
+        - postfix
+        - dovecot
+    tasks:
+      - name: create a user and add him to a group
+        user:
+          name: "{{ item.name }}"
+          state: present
+          groups: "{{ item.groups }}"
+        with_items:
+          - { name: 'jane',groups: 'weblogic'}
+      - name: install multiple package with items
+        yum:
+          name: "{{ mail_services }}"
+          state: present
+        with_items: "{{ mail_services }}"

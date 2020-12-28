@@ -1,0 +1,59 @@
+    1  yum install epel-release
+    2  yum install ansible
+    3  ansible --version
+    4  hostnamectl set-hostname --static ansiblemaster
+    5  exit
+    6  ssh-keygen -t rsa
+    7  cat /root/.ssh/id_rsa.pub
+    8   cat /root/.ssh/id_rsa.pub
+    9  vi /etc/hosts
+   10  cat /etc/hosts
+   11  ssh root@db1
+   12  ls
+   13  cd ansiblecommand/
+   14  ls
+   15  vi /etc/ansible/ansible.cfg 
+   16  ansible all -m setup
+   17  ansible all -m setup | grep ansible_distribution
+   18  ansible all -m setup | grep ipv4
+   19  ansible all -m setup | grep ipv4.address
+   20  ansible all -m setup | grep ansible_eth0.ipv4.address
+   21  ansible all -m setup | grep ansible_eth0.ipv4
+   22  ansible all -m setup | grep ansible_eth0
+   23  ansible all -m setup | grep ansible_default_ipv4"
+   24  ansible all -m setup | grep ansible_default_ipv4
+   25  ansible all -m setup | grep ansible_default_ipv4.address
+   26  ansible all -m setup filter ansible_default_ipv4.address
+   27  ansible all -m setup | grep ansible_default_ipv4."address"
+   28  ansible all -m setup | grep ansible_default_ipv4."address"=
+   29  cat /etc/hosts
+   30  cd /etc/ansible/
+   31  ls
+   32  vi hosts
+   33  ls
+   34  cd /root
+   35  ls
+   36  mkdir testweb
+   37  cd testweb/
+   38  touch ansible.cfg
+   39  touch hosts
+   40  vi ansible.cfg 
+   41  vi hosts
+   42  git config --global user.name "John Doe"
+   43  yum install git
+   44  git config --global user.name "John Doe"
+   45  git config --global user.email "John@gmail.com"
+   46  git init
+   47  git add .
+   48  git commit -m "inventory and ansible.cfg"
+   49  git remote add origin https://github.com/gopal1409/hclbatch3.git
+   50  git push -u origin master
+   51  ls
+   52  cd ..
+   53  ls
+   54  cd ansiblecommand/
+   55  ls
+   56  cd ..
+   57  ls
+   58  cd testweb/
+   59  history > ansible-adhoc.txt

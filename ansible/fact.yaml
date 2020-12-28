@@ -1,0 +1,9 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: db1
+    tasks:
+      - name: print various fact
+        debug:
+          msg: the default address of {{ ansible_fqdn }} is {{ ansible_default_ipv4.address }} and {{ ansible_distribution }}

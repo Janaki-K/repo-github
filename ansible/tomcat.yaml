@@ -1,0 +1,46 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: db1
+    vars:
+      req_java: java-1.8.0-openjdk
+      set_java: jre-1.8.0-openjdk
+      req_tomcat_var: 8.5.61
+      tomcat_port: 8090
+    tasks:
+      - name: update repos
+        yum:
+          name: "*"
+          state: latest
+      - name: install required java
+        yum: 
+          name: "{{ req_java }}"
+          state: present
+      - name: set the default java
+        alternatives:
+          name: java 
+          link: /usr/bin/java
+          path: /usr/lib/jvm/{{set_java}}/bin/java
+      - name: download the tomcat
+        get_url:
+          url: https://downloads.apache.org/tomcat/tomcat-{{req_tomcat_var.split('.')[0]}}/v{{req_tomcat_var}}/bin/apache-tomcat-{{req_tomcat_var}}.tar.gz
+          dest: /usr/local
+      - name: remove dir
+        file:
+          path: /usr/local/latest
+          state: absent
+      - name: Extract Download tomcat
+        unarchive:
+          src: "/usr/local/apache-tomcat-{{req_tomcat_var}}.tar.gz"    
+          dest: /usr/local/
+          remote_src: yes
+      - name: rename tomcat home directory
+        command: mv /usr/local/apache-tomcat-{{req_tomcat_var}} /usr/local/latest
+      - name: replacing default port with custom port
+        template:
+          src: server.xml.j2
+          dest: /usr/local/latest/conf/server.xml
+      - name: start tomcat
+        shell: nohup /usr/local/latest/bin/startup.sh &
+     

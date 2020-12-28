@@ -1,0 +1,19 @@
+[control]
+ansiblemaster ansible_connection=local
+
+[db]
+db1
+db11 ansible_port=2222
+
+[db:vars]
+ansible_user=root
+
+[web]
+web1
+web2
+web3
+
+[web:vars]
+ansible_become=true
+ansible_become_pass=password
+ansible_port=5689

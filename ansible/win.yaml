@@ -1,0 +1,28 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: win
+    tasks:
+      - name: create user
+        win_user:
+          name: ansible
+          password: "Admin@12345#rr"
+          state: present
+      - name: create directory
+        win_file:
+          path: C:\ansible_example
+          state: directory
+      - name: install a package
+        win_get_url:
+          url: https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0307177e14752e359fde5423ab583e43/ndp48-devpack-enu.exe
+          dest: C:\ansible_example
+      - name: install exe
+        win_package:
+          path: C:\ansible_example\ndp48-devpack-enu.exe
+          product_id: 014120d7-d689-4305-befd-3cb711108212/0307177e14752e359fde5423ab583e43
+          arguments:
+          - /install
+          - /passive
+          - /norestart
+          state: present

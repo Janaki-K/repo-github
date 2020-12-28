@@ -1,0 +1,33 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: db1
+    
+    tasks:
+      - name: Install an Epel-release
+        command: yum-config-manager --enable epel
+      - name: install apache
+        shell: yum install httpd 
+      - name: start apache service
+        service:
+          name: httpd
+          enabled: true
+          state: started
+      - name: install firewalld package
+        yum:
+          name: firewalld
+          state: installed
+      - name: start the firewalld
+        service:
+          name: firewalld
+          enabled: true
+          state: started
+      - name: premit http service
+        firewalld:
+          service: http
+          permanent: true
+          state: enabled
+          immediate: yes
+      
+          
