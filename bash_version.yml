@@ -1,0 +1,8 @@
+---
+ - name: To Display bash version
+   hosts: db
+   gather_facts: no
+   tasks: 
+   - shell: "bash --version"
+     register: bash_ver
+   - debug: var=bash_ver.stdout

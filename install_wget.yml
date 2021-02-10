@@ -1,0 +1,10 @@
+---
+ - name : Install the wget package
+   hosts : db
+   gather_facts : yes
+   tasks:
+    - name : Task for install wget package
+      yum : name=wget state=latest
+    - name : Task to install vim 
+      yum : name=vim state=latest
+...

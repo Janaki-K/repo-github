@@ -1,0 +1,23 @@
+---
+ - hosts: db
+   gather_facts: no
+   tasks:
+   - name: To display the os name
+     shell: "uname"
+     register: os_name
+   - name: to display the os_distribution
+     shell: "cat /etc/os-release | awk -F = 'NR==1 {print $2}'| awk '{print $1}' | tr '\"' ' '"
+     register: os_distro
+   - debug:
+      msg:
+       - "{{os_distro.stdout}}"
+       - "{{os_name.stdout}}"
+... 
+
+
+
+
+
+
+
+

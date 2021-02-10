@@ -1,0 +1,12 @@
+---
+ - name : Playbook on variables
+   hosts : all
+   gather_facts : no
+   vars:
+    web_servers: ['nginx','apache','httpd','tomcat']
+    packages: {'ubuntu':'apache','centos':'httpd'}
+   tasks :
+   - name: Task on test variables
+     debug:
+      var: web_servers[0] 
+     #  -  This to display {{packages}}
